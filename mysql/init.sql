@@ -1,10 +1,10 @@
--- Description: Initialize the database
+--Reference:
+--https://blog.devgenius.io/building-a-mysql-docker-image-with-preloaded-data-step-by-step-guide-6d03c79edecf
+
 CREATE DATABASE csc468;
 
--- Switch to the database
 USE csc468;
 
--- Create table
 CREATE TABLE cattle
 (
    types  VARCHAR(255) NOT NULL,
@@ -12,8 +12,6 @@ CREATE TABLE cattle
    PRIMARY KEY (types)
 );
 
--- Load data from CSV file
--- Put in the following location as we will copy it into the dockerfile
 LOAD DATA INFILE '/var/lib/mysql-files/cattle.csv'
 INTO TABLE cattle
 FIELDS TERMINATED BY ','
